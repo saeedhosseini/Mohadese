@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('family');
             $table->string('mobile')->unique();
-            $table->timestamp('national_code')->unique();
+            $table->string('national_code')->unique();
             $table->rememberToken();
             $table->timestamps();
         });
