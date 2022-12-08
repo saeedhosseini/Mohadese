@@ -22,7 +22,6 @@
     },
     "autoload": {
         "files": [
-            "app/Helpers/tools.php",
             "app/Helpers/response.php"
         ],
         "psr-4": {
