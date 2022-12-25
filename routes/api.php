@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BotController;
 use App\Http\Controllers\InsuranceController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,6 @@ Route::middleware(['auth:sanctum'])->group(function (){
    Route::get('insurances' , [InsuranceController::class , 'index']);
    Route::post('insurances' , [InsuranceController::class , 'store']);
 });
+
+Route::get('bot/add' , [BotController::class , 'index']);
+Route::get('bot/delete' , [BotController::class , 'delete']);
