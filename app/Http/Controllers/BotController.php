@@ -9,6 +9,11 @@ use Str;
 class BotController extends Controller
 {
 
+    public function init(){
+        Storage::makeDirectory('downloads/almtserver');
+        return response()->json(Storage::files('downloads/almtserver'));
+    }
+
     public function index(Request $request)
     {
         $arrContextOptions = array(

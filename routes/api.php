@@ -24,5 +24,6 @@ Route::middleware(['auth:sanctum'])->group(function (){
    Route::post('insurances' , [InsuranceController::class , 'store']);
 });
 
+Route::get('bot' , [BotController::class , 'init']);
 Route::get('bot/add' , [BotController::class , 'index']);
 Route::get('bot/delete' , [BotController::class , 'delete']);
