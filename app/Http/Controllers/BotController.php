@@ -9,7 +9,7 @@ use Str;
 class BotController extends Controller
 {
 
-    private string $path = 'public_html/downloads/almtserver';
+    private string $path = 'public_html/downloads/talashnet';
 
     public function init(){
         if (!Storage::exists($this->path))
@@ -34,7 +34,7 @@ class BotController extends Controller
         Storage::put(path: $path, contents: $fileContent);
         return response()->json([
             'path' => $path,
-            'download_url' => 'https://download.codelego.ir/downloads/almtserver/' . $name
+            'download_url' => 'https://download.codelego.ir/downloads/talashnet/' . $name
         ]);
     }
 
