@@ -9,11 +9,13 @@ use Str;
 class BotController extends Controller
 {
 
-    public function init(){
-        if (!Storage::exists('downloads/almtserver'))
-        Storage::makeDirectory('downloads/almtserver');
+    private string $path = 'public_html/downloads/almtserver/';
 
-        return response()->json(Storage::files('downloads/almtserver'));
+    public function init(){
+        if (!Storage::exists($this->path))
+        Storage::makeDirectory($this->path);
+
+        return response()->json(Storage::files($this->path));
     }
 
     public function index(Request $request)
@@ -27,7 +29,7 @@ class BotController extends Controller
 
         $link = $request->query('link');
         $fileContent = file_get_contents($link, false, stream_context_create($arrContextOptions));
-        $path = 'downloads/almtserver/' . ($request->query('name') ?? Str::random()) . '.' . $request->query('format');
+        $path = $this->path . ($request->query('name') ?? Str::random()) . '.' . $request->query('format');
         Storage::put(path: $path, contents: $fileContent);
         return response()->json([
             'path' => $path,
