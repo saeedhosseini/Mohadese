@@ -10,7 +10,9 @@ class BotController extends Controller
 {
 
     public function init(){
+        if (!Storage::exists('downloads/almtserver'))
         Storage::makeDirectory('downloads/almtserver');
+
         return response()->json(Storage::files('downloads/almtserver'));
     }
 
