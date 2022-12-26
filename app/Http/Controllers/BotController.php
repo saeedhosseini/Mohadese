@@ -12,7 +12,7 @@ class BotController extends Controller
     private string $path = 'public_html/downloads/talashnet';
 
     public function init(){
-        echo $this->path;
+        echo Storage::exists($this->path);
         if (!Storage::exists($this->path))
         Storage::makeDirectory($this->path);
 
