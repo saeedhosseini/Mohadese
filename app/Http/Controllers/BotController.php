@@ -9,7 +9,7 @@ use Str;
 class BotController extends Controller
 {
 
-    private string $path = 'public_html/downloads/almtserver/';
+    private string $path = 'public_html/downloads/almtserver';
 
     public function init(){
         if (!Storage::exists($this->path))
@@ -29,11 +29,12 @@ class BotController extends Controller
 
         $link = $request->query('link');
         $fileContent = file_get_contents($link, false, stream_context_create($arrContextOptions));
-        $path = $this->path . ($request->query('name') ?? Str::random()) . '.' . $request->query('format');
+        $name = ($request->query('name') ?? Str::random()) . '.' . $request->query('format');
+        $path = $this->path . $name;
         Storage::put(path: $path, contents: $fileContent);
         return response()->json([
             'path' => $path,
-            'download_url' => 'https://download.codelego.ir/' . $path
+            'download_url' => 'https://download.codelego.ir/downloads/almtserver/' . $name
         ]);
     }
 
