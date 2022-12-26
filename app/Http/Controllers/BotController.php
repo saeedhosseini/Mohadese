@@ -14,9 +14,9 @@ class BotController extends Controller
     public function init(){
        // echo Storage::exists('public_html/downloads/talashnet');
        // if (!Storage::exists($this->path))
-        Storage::makeDirectory($this->path);
+        //Storage::allDirectories($this->path);
 
-        return response()->json(Storage::files($this->path));
+        return response()->json(Storage::allDirectories());
     }
 
     public function index(Request $request)
