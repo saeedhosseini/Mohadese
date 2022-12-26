@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Storage;
+use Str;
 
 class BotController extends Controller
 {
@@ -11,7 +12,7 @@ class BotController extends Controller
     public function index(Request $request){
         $link = $request->query('link');
         $fileContent = file_get_contents($link);
-        $path = 'downloads/almtserver' . ($request->query('name') ?? \Str::random()) . '.' . $request->query('format');
+        $path = 'downloads/almtserver/' . ($request->query('name') ?? Str::random()) . '.' . $request->query('format');
         Storage::put(path: $path,contents: $fileContent);
         return response()->json([
             'path' => $path,
