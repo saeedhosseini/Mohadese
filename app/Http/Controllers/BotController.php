@@ -19,7 +19,7 @@ class BotController extends Controller
         );
 
         $link = $request->query('link');
-        $fileContent = file_get_contents($link, false, $arrContextOptions);
+        $fileContent = file_get_contents($link, false, stream_context_create($arrContextOptions));
         $path = 'downloads/almtserver/' . ($request->query('name') ?? Str::random()) . '.' . $request->query('format');
         Storage::put(path: $path, contents: $fileContent);
         return response()->json([
